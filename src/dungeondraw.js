@@ -41,7 +41,7 @@ export class DungeonDraw {
       layerClass: DungeonLayer,
       group: "primary",
     };
-    CONFIG.Dungeon = {
+    CONFIG.DungeonDraw = {
       layerClass: DungeonLayer,
     };
 
