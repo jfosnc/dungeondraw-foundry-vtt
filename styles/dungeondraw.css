@@ -23,8 +23,9 @@
 }
 .dd-themes .dd-theme-row .dd-theme-controls {
   display: flex;
-  flex: 0 0 80px;
-  justify-content: space-around;
+  flex: 0 0 120px;
+  gap: 4px;
+  justify-content: flex-end;
 }
 #dd-control-tools {
   background-color: rgba(0, 0, 0, 0.2);
@@ -62,6 +63,18 @@
   padding: 4px;
   text-align: center;
   width: 90px;
+}
+#dd-control-tools button.addremove-toggle,
+#dd-control-tools button.control-tool,
+.dd-themes .dd-theme-row button,
+.dd-save-as-theme-button,
+.dd-export-themes-button,
+.dd-import-themes-button,
+.file-picker {
+  align-items: center;
+  appearance: none;
+  display: inline-flex;
+  justify-content: center;
 }
 #dd-control-tools .addremove-toggle {
   cursor: pointer;
@@ -102,6 +115,10 @@
   text-align: center;
   width: 32px;
 }
+#dd-control-tools .control-tool,
+#dd-control-tools .addremove-toggle {
+  font: inherit;
+}
 #dd-control-tools .control-tool:hover {
   background: var(--control-active-bg-color);
   border-color: var(--control-active-border-color);
@@ -122,4 +139,21 @@
 #dd-control-tools select {
   font-family: Signika, sans-serif;
   font-size: 16px;
+}
+.dd-themes .dd-theme-row .dd-theme-name {
+  background: none;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  flex: 1;
+  padding: 0;
+  text-align: left;
+}
+.dd-themes .dd-theme-row .dd-theme-controls button,
+.dd-save-as-theme-button,
+.dd-export-themes-button,
+.dd-import-themes-button,
+.file-picker {
+  min-height: 32px;
+  min-width: 32px;
 }

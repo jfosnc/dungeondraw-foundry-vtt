@@ -169,7 +169,7 @@
           data-type="imagevideo"
           data-target="floorTexture"
           title="Browse Files"
-          tabindex="-1"
+          aria-label="Browse Files"
         >
           <i class="fas fa-file-import fa-fw"></i>
         </button>
@@ -719,26 +719,35 @@
         data-themetype="custom"
         data-theme="{{themeKey}}"
       >
-        <div class="dd-theme-name">
+        <button type="button" class="dd-theme-name item-control">
           {{name}} {{#with (lookup ../customThemes themeKey)~}} {{name}}
           {{/with}}
-        </div>
+        </button>
         <div class="dd-theme-controls">
-          <a
+          <button
+            type="button"
             class="item-control item-edit dd-theme-edit"
             title='{{localize "DD.EditTheme"}}'
-            ><i class="fas fa-edit"></i
-          ></a>
-          <a
+            aria-label='{{localize "DD.EditTheme"}}'
+          >
+            <i class="fas fa-edit"></i>
+          </button>
+          <button
+            type="button"
             class="item-control item-edit dd-theme-copy"
             title='{{localize "DD.CopyTheme"}}'
-            ><i class="fas fa-copy"></i
-          ></a>
-          <a
+            aria-label='{{localize "DD.CopyTheme"}}'
+          >
+            <i class="fas fa-copy"></i>
+          </button>
+          <button
+            type="button"
             class="item-control item-delete dd-theme-delete"
             title='{{localize "DD.DeleteTheme"}}'
-            ><i class="fas fa-trash"></i
-          ></a>
+            aria-label='{{localize "DD.DeleteTheme"}}'
+          >
+            <i class="fas fa-trash"></i>
+          </button>
         </div>
       </div>
       {{/each}}
@@ -754,7 +763,12 @@
           placeholder='{{localize "DD.ThemeNamePlaceholder"}}'
           data-dtype="String"
         />
-        <button type="button" class="dd-save-as-theme-button">
+        <button
+          type="button"
+          class="dd-save-as-theme-button"
+          aria-label='{{localize "DD.SaveAsCustomTheme"}}'
+          title='{{localize "DD.SaveAsCustomTheme"}}'
+        >
           <i class="fas fa-save"></i>
         </button>
       </div>
@@ -764,6 +778,7 @@
         type="button"
         class="dd-export-themes-button"
         title="{{localize 'DD.Export'}}"
+        aria-label="{{localize 'DD.Export'}}"
       >
         <i class="fas fa-file-export"></i>{{localize "DD.Export"}}
       </button>
@@ -771,6 +786,7 @@
         type="button"
         class="dd-import-themes-button"
         title="{{localize 'DD.Import'}}"
+        aria-label="{{localize 'DD.Import'}}"
       >
         <i class="fas fa-file-import"></i>{{localize "DD.Import"}}
       </button>
@@ -780,9 +796,9 @@
       <h2>{{localize "DD.ModuleThemes"}}</h2>
       {{#each themeKeys as |themeKey|}}
       <div class="dd-theme-row" data-theme="{{themeKey}}">
-        <div class="dd-theme-name item-control">
+        <button type="button" class="dd-theme-name item-control">
           {{name}} {{#with (lookup ../themes themeKey)~}} {{name}} {{/with}}
-        </div>
+        </button>
         <div class="dd-theme-controls"></div>
       </div>
       {{/each}}
