@@ -91,8 +91,8 @@ export class DungeonLayer extends foundry.canvas.layers.PlaceablesLayer {
   static get layerOptions() {
     return foundry.utils.mergeObject(super.layerOptions, {
       name: DungeonLayer.LAYER_NAME,
-      controllableObjects: true,
-      rotatableObjects: true,
+      controllableObjects: false,
+      rotatableObjects: false,
       zIndex: -1, // under tiles and background image
     });
   }
