@@ -131,7 +131,7 @@ export class Keybindings {
 
     // Clean up stairs preview state when switching away from stairs tool
     if (game.activeDungeonDrawTool === "stairs" && toolName !== "stairs") {
-      canvas.dungeon?._resetStairsState?.();
+      constants.getDungeonLayer()?._resetStairsState?.();
     }
     game.activeDungeonDrawTool = toolName;
     toolbar.updateActiveCss();

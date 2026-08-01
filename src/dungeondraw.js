@@ -62,7 +62,7 @@ export class DungeonDraw {
           title: "DD.ButtonTitleUndo",
           icon: "fas fa-undo",
           onClick: async () => {
-            await canvas.dungeon.dungeon.undo();
+            await constants.getDungeonLayer()?.dungeon?.undo();
           },
           button: true,
         },
@@ -71,7 +71,7 @@ export class DungeonDraw {
           title: "DD.ButtonTitleRedo",
           icon: "fas fa-redo",
           onClick: async () => {
-            await canvas.dungeon.dungeon.redo();
+            await constants.getDungeonLayer()?.dungeon?.redo();
           },
           button: true,
         },
@@ -95,7 +95,7 @@ export class DungeonDraw {
           icon: "fas fa-sign-out-alt",
           visible: game.user.isGM,
           onClick: async () => {
-            await canvas.dungeon.dungeon.saveToSceneBackground();
+            await constants.getDungeonLayer()?.dungeon?.saveToSceneBackground();
           },
           button: true,
         },
@@ -105,7 +105,7 @@ export class DungeonDraw {
           icon: "fas fa-image",
           visible: game.user.isGM,
           onClick: async () => {
-            await canvas.dungeon.dungeon.saveToTile();
+            await constants.getDungeonLayer()?.dungeon?.saveToTile();
           },
           button: true,
         },
@@ -114,7 +114,7 @@ export class DungeonDraw {
           title: "DD.ButtonTitleClearDrawing",
           icon: "fas fa-eraser",
           visible: game.user.isGM,
-          onClick: () => canvas.dungeon.dungeon?.clearDrawing(),
+          onClick: () => constants.getDungeonLayer()?.dungeon?.clearDrawing(),
           button: true,
         },
         clear: {
@@ -122,27 +122,27 @@ export class DungeonDraw {
           title: "DD.ButtonTitleClearAll",
           icon: "fas fa-trash",
           visible: game.user.isGM,
-          onClick: () => canvas.dungeon.deleteAll(),
+          onClick: () => constants.getDungeonLayer()?.deleteAll(),
           button: true,
         },
       },
       activeTool: "drawmap",
       // eslint-disable-next-line no-unused-vars
       onChange: (event, active) => {
-        if (active) canvas.dungeon.activate();
+        if (active) constants.getDungeonLayer()?.activate();
       },
       onToolChange: () => {},
     };
   }
 
-  static async canvasReady(canvas) {
-    await canvas.dungeon.loadDungeon();
+  static async canvasReady() {
+    await constants.getDungeonLayer()?.loadDungeon();
   }
 
   static async updateJournalEntry(document, change, options, userId) {
     if (game.user.id !== userId) {
       // if somebody else changed the backing JournalEntry, we need to refresh
-      await canvas.dungeon.dungeon?.maybeRefresh(document);
+      await constants.getDungeonLayer()?.dungeon?.maybeRefresh(document);
     }
   }
 

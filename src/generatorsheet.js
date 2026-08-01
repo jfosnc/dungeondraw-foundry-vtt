@@ -1,3 +1,5 @@
+import * as constants from "./constants.js";
+
 /**
  * Sheet for dungeon generation ettings.
  *
@@ -75,6 +77,6 @@ export class GeneratorSheet extends FormApplication {
   async generate(event) {
     event.preventDefault();
     const formData = this._getSubmitData();
-    await canvas.dungeon.generate(formData);
+    await constants.getDungeonLayer()?.generate(formData);
   }
 }

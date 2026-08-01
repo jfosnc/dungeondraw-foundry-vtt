@@ -35,7 +35,8 @@ export class Settings {
         config: true,
         onChange: (value) => {
           // make sure DungeonLayer instance has latest value
-          canvas.dungeon.options.snapToGrid = value;
+          const layer = constants.getDungeonLayer();
+          if (layer) layer.options.snapToGrid = value;
         },
       }
     );

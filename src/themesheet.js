@@ -2,6 +2,7 @@
 // import { ConfigSheet } from "./configsheet.js";
 import { Settings } from "./settings.js";
 import { getCustomThemes, setCustomThemes } from "./themes.js";
+import * as constants from "./constants.js";
 
 /**
  * Sheet for Theme editing.
@@ -59,10 +60,10 @@ export class ThemeSheet extends FormApplication {
     setCustomThemes(customThemes);
     // re-draw the dungeon
     // draw() and refresh() on the layer makes the dungeon disappear
-    //canvas.dungeon.draw();
-    //canvas.dungeon.refresh();
+    //constants.getDungeonLayer().draw();
+    //constants.getDungeonLayer().refresh();
     // refresh on the dungeon does nothing
-    await canvas.dungeon.dungeon?.refresh();
+    await constants.getDungeonLayer()?.dungeon?.refresh();
 
     // force already-open config sheet to re-render
     // TODO: fix this circular dependency

@@ -1,5 +1,6 @@
 // module name from module.json
 export const MODULE_NAME = "dungeon-draw";
+export const DUNGEON_LAYER_NAME = "dungeondraw";
 
 // set as wall flag
 export const DUNGEON_VERSION = "1.0";
@@ -17,3 +18,7 @@ export const SETTING_THEME_PAINTER_THEME = "themePainterTheme";
 
 export const SETTING_TAGGER_ENABLED = "taggerEnabled";
 export const SETTING_TAGGER_TAG = "taggerTag";
+
+export function getDungeonLayer() {
+  return canvas?.[DUNGEON_LAYER_NAME] ?? null;
+}

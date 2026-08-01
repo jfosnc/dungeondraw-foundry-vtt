@@ -18,6 +18,7 @@ import {
   handleRoomCompletion,
   handleRemoveCompletion,
 } from "./drawing-completion.js";
+import * as constants from "../constants.js";
 
 // Tool state helpers
 function isFreehand() {
@@ -65,7 +66,7 @@ function onFreeHandMouseDraw(preview, event) {
  * @extends {PlaceablesLayer}
  */
 export class DungeonLayer extends foundry.canvas.layers.PlaceablesLayer {
-  static LAYER_NAME = "dungeon";
+  static LAYER_NAME = constants.DUNGEON_LAYER_NAME;
 
   /** @inheritdoc */
   static documentName = "Drawing";

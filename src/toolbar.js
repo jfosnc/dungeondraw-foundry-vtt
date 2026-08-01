@@ -4,6 +4,7 @@ import {
   setThemePainterThemeKey,
   themes,
 } from "./themes.js";
+import * as constants from "./constants.js";
 
 export class DungeonDrawToolbar extends Application {
   static get defaultOptions() {
@@ -166,7 +167,7 @@ export class DungeonDrawToolbar extends Application {
     const activeTool = $(event.currentTarget).data("tool");
     // Clean up stairs preview state when switching away from stairs tool
     if (game.activeDungeonDrawTool === "stairs" && activeTool !== "stairs") {
-      canvas.dungeon?._resetStairsState?.();
+      constants.getDungeonLayer()?._resetStairsState?.();
     }
     game.activeDungeonDrawTool = activeTool;
     this.updateActiveCss();

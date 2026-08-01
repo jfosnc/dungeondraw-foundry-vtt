@@ -8,6 +8,7 @@ import {
   themes,
 } from "./themes.js";
 import { ThemeSheet } from "./themesheet.js";
+import * as constants from "./constants.js";
 
 /**
  * Sheet for dungeon config/settings.
@@ -40,7 +41,7 @@ export class ConfigSheet extends FormApplication {
 
   /** @override */
   getData() {
-    let config = canvas.dungeon.dungeon?.state().config;
+    let config = constants.getDungeonLayer()?.dungeon?.state().config;
     if (!config) {
       config = defaultConfig();
     }
@@ -67,7 +68,7 @@ export class ConfigSheet extends FormApplication {
     // TODO: handle customThemeName vs. config better
     delete formData.customThemeName;
     delete formData.themePainterTheme;
-    canvas.dungeon.dungeon?.setConfig(formData);
+    constants.getDungeonLayer()?.dungeon?.setConfig(formData);
     if (game.user.isGM) {
       // need GM privs to update scene
       await canvas.scene.update({
@@ -126,8 +127,9 @@ export class ConfigSheet extends FormApplication {
    */
   _onResetDefaults(event) {
     event.preventDefault();
-    canvas.dungeon.dungeon?.setConfig(defaultConfig());
-    canvas.dungeon.dungeon.refresh();
+    const dungeon = constants.getDungeonLayer()?.dungeon;
+    dungeon?.setConfig(defaultConfig());
+    dungeon?.refresh();
     this.render();
   }
 
@@ -144,7 +146,7 @@ export class ConfigSheet extends FormApplication {
       theme = themes[themeKey];
     }
     const newConfig = { ...theme.config };
-    await canvas.dungeon.dungeon?.setConfig(newConfig);
+    await constants.getDungeonLayer()?.dungeon?.setConfig(newConfig);
     if (game.user.isGM) {
       // need GM privs to update scene
       await canvas.scene.update({
